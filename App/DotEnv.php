@@ -3,10 +3,8 @@ namespace App;
 
 class DotEnv {
     /**
-     * The directory where the .env file can be located.
-     *
      * @var string
-     */
+    */
     protected $path;
 
 
@@ -18,8 +16,7 @@ class DotEnv {
         $this->path = $path;
     }
 
-    public function load() :void
-    {
+    public function load() :void {
         if (!is_readable($this->path)) {
             throw new \RuntimeException(sprintf('%s file is not readable', $this->path));
         }

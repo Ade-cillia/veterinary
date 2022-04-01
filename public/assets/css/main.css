@@ -1,0 +1,41 @@
+.required_input{
+    color: red;
+}
+.card_container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+.worker_card{
+    width: 40%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(212, 212, 212);
+}
+.worker_card:hover{
+    transform: scale(1.02);
+}
+.info_detail{
+    margin-bottom: 100px;
+}
+.info_detail h2{
+    text-align: center;
+}
+.card_delete_container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.card_delete_container svg{
+    padding-right: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+.card_delete_container svg:hover{
+    transform: scale(1.05);
+}
+.bold{
+    font-weight: bold;
+}
