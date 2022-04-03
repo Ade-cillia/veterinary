@@ -12,35 +12,42 @@ class WorkerModel {
     
     public static function setWorker($data): void {
         $table = self::$tableName;
-        
-        $verifData = VerifData::verifWorkerAdd($data);
-        $sql= "INSERT INTO $table (upper_id,last_name,first_name,date_in,sexe,phone,mail,picture,specialties,nb_heal_max,date_out,other,cabinet_id) VALUES (:upper_id,:last_name,:first_name,:date_in,:sexe,:phone,:mail,:picture,:specialties,:nb_heal_max,:date_out,:other,:cabinet_id)";
-        $insertData = (array(
-            ':upper_id' => $verifData["upper_id"],
-            ':last_name' => $verifData["last_name"],
-            ':first_name' => $verifData["first_name"],
-            ':date_in' => $verifData["date_in"],
-            ':sexe' => $verifData["sexe"],
-            ':phone' => $verifData["phone"],
-            ':mail' => $verifData["mail"],
-            ':picture' => $verifData["picture"],
-            ':specialties' => $verifData["specialties"],
-            ':nb_heal_max' => $verifData["nb_heal_max"],
-            ':date_out' => $verifData["date_out"],
-            ':other' => $verifData["other"],
-            ':cabinet_id' => $verifData["cabinet_id"],
-        ));
+        $errorExeption = false;
         try {
-            $response = Bdd::prepare(
-                $sql,
-                self::$class,
-                $insertData,
-                false
-            );
-            header("Location: /worker");
-            exit;
-        } catch (\Exception $e) {
-            echo "une erreur est survenu, veuillez re essayer,Merci";
+            $verifData = VerifData::verifWorkerAdd($data);
+            $sql= "INSERT INTO $table (upper_id,last_name,first_name,date_in,sexe,phone,mail,picture,specialties,nb_heal_max,date_out,other,cabinet_id) VALUES (:upper_id,:last_name,:first_name,:date_in,:sexe,:phone,:mail,:picture,:specialties,:nb_heal_max,:date_out,:other,:cabinet_id)";
+            $insertData = (array(
+                ':upper_id' => $verifData["upper_id"],
+                ':last_name' => $verifData["last_name"],
+                ':first_name' => $verifData["first_name"],
+                ':date_in' => $verifData["date_in"],
+                ':sexe' => $verifData["sexe"],
+                ':phone' => $verifData["phone"],
+                ':mail' => $verifData["mail"],
+                ':picture' => $verifData["picture"],
+                ':specialties' => $verifData["specialties"],
+                ':nb_heal_max' => $verifData["nb_heal_max"],
+                ':date_out' => $verifData["date_out"],
+                ':other' => $verifData["other"],
+                ':cabinet_id' => $verifData["cabinet_id"],
+            ));
+        } catch (\Exception $error) {
+            $errorExeption=true;
+            echo '<div class="error"><p>Erreur reçue : '.$error->getMessage()."</p></div>";
+        }
+        try {
+            if (!$errorExeption) {
+                $response = Bdd::prepare(
+                    $sql,
+                    self::$class,
+                    $insertData,
+                    false
+                );
+                header("Location: /worker");
+                exit;
+            }
+        } catch (\Throwable $th) {
+            echo '<div class="error"><p>Erreur importante est survenu, Merci de contacter "ElFamosoRéparator-Aurélien"</p></div>';
         }
     }
     public static function getAll() {

@@ -8,14 +8,6 @@
                 <a href="/worker" class="btn btn-primary">RETOUR</a>
                 <div class="">
                     <form method="post" action="/worker/add">
-                        <?php
-                        if (isset($add_for)) {
-                            ?>
-                            <input type="hidden" name="user" value="<?=$add_for?>">
-                            <input type="hidden" name="add_for" value="<?=$add_for?>">
-                            <?php
-                        }
-                        ?>
                         </br>
                         <div class="mb-3">
                             <label for="last_name" class="form-label">Nom<span class="required_input">*</span></label>
