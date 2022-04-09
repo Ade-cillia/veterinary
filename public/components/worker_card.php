@@ -1,4 +1,4 @@
-<div class="worker_card">
+<div class="worker_card card">
     <div>
         <img src="/public/assets/<?=$value->picture?>" alt="profile de <?=$value->last_name?> <?=$value->first_name?>" width="100%">
     </div>

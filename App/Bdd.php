@@ -34,5 +34,8 @@ abstract class Bdd {
         }
         return $response;
     }
+    public static function lastId() {
+        return intval(self::$pdo->lastInsertId());
+    }
 }
 ?>

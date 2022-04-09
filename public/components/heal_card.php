@@ -1,4 +1,4 @@
-<div class="owner_card card">
+<div class="heal_card card">
     <div>
         <h3><?=$value->last_name?> <?=$value->first_name?></h3>
         <p>Téléphone : <?=$value->phone?></p>

@@ -9,9 +9,6 @@
                 <div class="">
                     <form method="post" action="/animal/add">
                         </br>
-                        <?php var_dump($_POST)
-
-                        ?>
                         <div class="mb-3">
                             <label for="name" class="form-label">Nom<span class="required_input">*</span></label>
                             <input type="text" class="form-control" name="name" id="name" placeholder="Nom" value="<?=isset($_POST['name'])?$_POST['name']:''?>" required>

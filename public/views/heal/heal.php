@@ -9,7 +9,15 @@
                 <div class="my-2">
                     <a href="/heal/add" class="float-end btn btn-success">AJOUTER</a>
                 </div>
-                
+                <div>
+                    <?php
+                     var_dump($allHeal);
+                     foreach ($allHeal as $key => $value) {
+                        include "./public/components/owner_card.php";
+                    }
+                    ?>
+                    
+                </div>
             </div>
         </div>
     </div>

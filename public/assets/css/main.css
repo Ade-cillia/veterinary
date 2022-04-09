@@ -1,3 +1,4 @@
+
 .required_input{
     color: red;
 }
@@ -44,4 +45,30 @@
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+.flex{
+    display: flex;
+}
+#allSelectedHealer p{
+    margin-right: 10px !important;
+    margin-bottom: 0px !important;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+}
+#allSelectedHealer div{
+   display: flex;
+   align-items: center;
+}
+#allSelectedHealer img{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#allSelectedHealer img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+#allSelectedHealer{
+    margin-bottom: 10px ;
 }

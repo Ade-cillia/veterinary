@@ -2,16 +2,23 @@
 namespace App\Controllers;
 
 use App\Bdd;
+use App\Models\AnimalModel;
+use App\Models\CabinetModel;
 use App\Models\HealModel;
+use App\Models\WorkerModel;
 
 class HealController {
     public static function index() {
-        $allAnimals =  HealModel::getAll();
+        $allHeal =  HealModel::getAll();
         include_once './public/views/heal/heal.php';
     }
     public static function add() {
+        $allWorker =  WorkerModel::getAll();
+        $allRoom =  CabinetModel::getAllRoom();
+        $allAnimal = AnimalModel::getAll();
         if (isset($_POST['submit'])) {
-            HealModel::setAnimal($_POST);
+            var_dump($_POST);
+            HealModel::setHealTreatment($_POST);
         }
         include_once './public/views/heal/heal_add.php';
         

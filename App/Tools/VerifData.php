@@ -63,20 +63,55 @@ abstract class VerifData {
     }
     public static function verifOwnerAdd(){
         $verifyData= [];
-        $verifyData["last_name"] = self::textControl("last_name","Nom",1,50);
-        $verifyData["first_name"] = self::textControl("first_name","Prénom",1,50);
-        $verifyData["phone"] = self::textControl("phone","Téléphone",1,50);
-        $verifyData["mail"] = self::textControl("mail","Email",1,50);
-        $verifyData["adress"] = self::textControl("adress","Adresse",1,255);
-
-        $verifyData["other"] = self::textControl("other","Autre",0,500,true);
+ 
         try {
-            
+            $verifyData["last_name"] = self::textControl("last_name","Nom",1,50);
+            $verifyData["first_name"] = self::textControl("first_name","Prénom",1,50);
+            $verifyData["phone"] = self::textControl("phone","Téléphone",1,50);
+            $verifyData["mail"] = self::textControl("mail","Email",1,50);
+            $verifyData["adress"] = self::textControl("adress","Adresse",1,255);
+    
+            $verifyData["other"] = self::textControl("other","Autre",0,500,true);
         } catch (Exception $error) {
             throw new Exception($error->getMessage());
         }
         return $verifyData;
     }
+    public static function verifHealAdd(){
+        $verifyData= [];
+        try {
+            $verifyData["name"] = self::textControl("name","Nom",1,50);
+
+            $verifyData["date_start"] = self::textControl("date_start","Date-heure de début",1,100);
+            $verifyData["date_end"] = self::textControl("date_end","Date-heure de fin",1,100);
+    
+            $verifyData["price"] = self::intControl("price","Prix",0,null);
+            $verifyData["room_id"] = self::intControl("room_id","Salle utilisé",0,null);
+            $verifyData["animal_id"] = self::intControl("animal_id","Animal",0,null);
+    
+            $verifyData["payd"] = self::boolControl("payd","Soin payé");
+            $verifyData["finish"] = self::boolControl("finish","Soin finit");
+    
+            $verifyData["other"] = self::textControl("other","Autre",0,500,true);
+        } catch (Exception $error) {
+            throw new Exception($error->getMessage());
+        }
+        return $verifyData;
+    }
+    public static function verifTreatmentAdd(){
+        $verifyData= [];
+        if (!isset($_POST["healer_selected"])){
+            throw new Exception("Aucun soigneur séléctionné");
+        }
+        return $_POST["healer_selected"];
+    }
+    
+
+
+
+
+
+    // CONTROL DATA //
 
 
     public static function textControl($inputName,$name,$minChar=1,$maxChar=255,$nullable=false){
@@ -111,8 +146,49 @@ abstract class VerifData {
         }
         return intval($_POST[$inputName]);
     }
+    public static function boolControl($inputName,$name){
+        if (!isset($_POST[$inputName])){
+            throw new Exception("Le champ '".$name."'est manquant");
+        }
+        $bool = filter_var($_POST[$inputName],FILTER_VALIDATE_BOOLEAN);
+        if ($bool) {
+            $bool=1;
+        } else {
+            $bool=0;
+        }
+        return $bool;
+    }
 
     public static function pictureControl($picture,$defaultPicture){
         return $defaultPicture; //flemme#pas le temps ^^
     }
+    public static function dateTimeControl($inputName,$name){
+        
+        // if (!isset($_POST[$inputName])){
+        //     throw new Exception("Le champ '".$name."'est manquant");
+        // }
+        //$date = date_parse($_POST[$inputName]);
+        // $checkDate = (
+        //     $date['error_count'] == 0 && checkdateTime(
+        //         $date['month'],
+        //         $date['day'],
+        //         $date['year'],
+        //         $date['hour'],
+        //         $date['minute'],
+        //         $date['second']
+        //     )
+        // );
+        // $format = "Y-m-dTH:M";
+        // $date = DateTime::createFromFormat($format, $_POST[$inputName]);
+        // var_dump($date);
+        // var_dump($_POST[$inputName]);
+        // if (!($date && $date->format($format) == $_POST[$inputName])) {
+        //     # code...
+        // }
+        // if ($checkDate){
+        //     throw new Exception("Le champ '".$name."' est une date-heure non valide");
+        // }
+        // return $_POST[$inputName];
+    }
+   
 }
