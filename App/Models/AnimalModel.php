@@ -81,4 +81,15 @@ abstract class AnimalModel extends Model{
         );
         return Bdd::prepare($sql,self::$class,$data,false);
     }
+    public static function getAllForOneOwner($ownerId){
+        $table = self::$tableName;
+        $sql = "SELECT *
+            FROM $table 
+            WHERE $table.owner_id=:ownerId
+        ";
+        $data = array(
+            ":ownerId" => $ownerId
+        );
+        return Bdd::prepare($sql,self::$class,$data,true);
+    }
 }

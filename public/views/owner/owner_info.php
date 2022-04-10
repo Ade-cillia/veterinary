@@ -17,17 +17,43 @@
                         <div>
                             <div class="info_detail">
                                 <h2><?=$owner->getLastName()?> <?=$owner->getFirstName()?></h2>
-                                <p class="bold">Information du propriétaire:</p>
-                                <ul>
-                                    <li>Téléphone: <?=$owner->phone?></li>
-                                    <li>Email: <?=$owner->mail?></li>
-                                    <li>Adresse: <?=$owner->adress?></li>
-                                    <li>Date D'inscription: <?=$owner->date_inscription?></li>
-                                </ul>
-                                <p><span class="bold">Autre information:</span> <?=$owner->other?"":"'Aucune autre information'"?></p>
-                                <p>&nbsp&nbsp&nbsp&nbsp <?=$owner->other?></p>
-                               
+                                <div>
+                                    <p class="bold">Information du propriétaire:</p>
+                                    <ul>
+                                        <li>Téléphone: <?=$owner->phone?></li>
+                                        <li>Email: <?=$owner->mail?></li>
+                                        <li>Adresse: <?=$owner->adress?></li>
+                                        <li>Date D'inscription: <?=$owner->date_inscription?></li>
+                                    </ul>
+                                    <p><span class="bold">Autre information:</span> <?=$owner->other?"":"'Aucune autre information'"?></p>
+                                    <p>&nbsp&nbsp&nbsp&nbsp <?=$owner->other?></p>
+                                </div>
+                                <div>
+                                    <p class="bold">Ses animaux:</p>
+                                    <?php
+                                    var_dump($allAnimalForOneOwner);
+                                        if (empty($allAnimalForOneOwner)) {
+                                            ?>
+                                            <p>Aucun animal enregistré</p>
+                                            <?php
+                                        } else {
+                                            foreach ($allAnimalForOneOwner as $key => $value) {
+                                                ?>
+                                                <ul>
+                                                    <li>Nom du soi</li>
+    
+                                                </ul>
+                                                <p>-------------------</p>
+                                                <?php
+                                            }
+                                        }
+                                       
+                                    ?>
+                                    <p class="bold">Chiffre d'affaire générer par ce propriétaire: <?= $owner->calculateTurnover($allAnimalForOneOwner)->getTurnover();?>€</p>
+                                </div>
+                                
                             </div>
+
                         </div>
                         <?php
                     }

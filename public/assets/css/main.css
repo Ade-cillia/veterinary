@@ -2,8 +2,7 @@
 .green{
     color: green;
 }
-.red,
-.required_input{
+.red,.required_input{
     color: red;
 }
 .card_container{

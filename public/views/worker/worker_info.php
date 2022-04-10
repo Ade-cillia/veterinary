@@ -45,7 +45,6 @@
                                 </ul>
                                 <p><span class="bold">Autre information:</span> <?=$worker->other?"":"'Aucune autre information'"?></p>
                                 <p>&nbsp&nbsp&nbsp&nbsp <?=$worker->other?></p>
-                               
                             </div>
                         </div>
                         <?php

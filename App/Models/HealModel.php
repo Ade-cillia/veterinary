@@ -111,4 +111,15 @@ abstract class HealModel extends Model{
         );
         return Bdd::prepare($sql,self::$class,$data,false);
     }
+    public static function getAllForOneAnimal($animalId){
+        $table = self::$tableName;
+        $sql = "SELECT *
+            FROM $table 
+            WHERE $table.animal_id=:animalId
+        ";
+        $data = array(
+            ":animalId" => $animalId
+        );
+        return Bdd::prepare($sql,self::$class,$data,true);
+    }
 }

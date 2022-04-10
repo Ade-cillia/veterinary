@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Bdd;
+use App\Models\AnimalModel;
 use App\Models\OwnerModel;
 // use App\Models\CabinetModel;
 
@@ -19,6 +20,7 @@ class OwnerController extends Controller{
     }
     public static function getOne($id) {
         $owner = OwnerModel::getOne($id);
+        $allAnimalForOneOwner = AnimalModel::getAllForOneOwner($id);
         include_once './public/views/owner/owner_info.php';
     }
 
