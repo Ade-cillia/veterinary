@@ -91,6 +91,8 @@ abstract class HealModel extends Model{
                         false
                     );
                 }
+                header("Location: /heal");
+                exit;
                
             }
         } catch (\Throwable $th) {
@@ -114,6 +116,17 @@ abstract class HealModel extends Model{
     public static function getAllForOneAnimal($animalId){
         $table = self::$tableName;
         $sql = "SELECT *
+            FROM $table 
+            WHERE $table.animal_id=:animalId
+        ";
+        $data = array(
+            ":animalId" => $animalId
+        );
+        return Bdd::prepare($sql,self::$class,$data,true);
+    }
+    public static function getPriceForOneAnimal($animalId){
+        $table = self::$tableName;
+        $sql = "SELECT price
             FROM $table 
             WHERE $table.animal_id=:animalId
         ";

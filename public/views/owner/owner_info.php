@@ -31,7 +31,6 @@
                                 <div>
                                     <p class="bold">Ses animaux:</p>
                                     <?php
-                                    var_dump($allAnimalForOneOwner);
                                         if (empty($allAnimalForOneOwner)) {
                                             ?>
                                             <p>Aucun animal enregistré</p>
@@ -39,10 +38,19 @@
                                         } else {
                                             foreach ($allAnimalForOneOwner as $key => $value) {
                                                 ?>
-                                                <ul>
-                                                    <li>Nom du soi</li>
-    
-                                                </ul>
+                                                <div class="flex">
+                                                    <div class="litle_picture">
+                                                        <img src="/public/assets/<?=$value->picture?>" alt="profile de <?=$value->name?>">
+                                                    </div>
+                                                    <ul>
+                                                        <li>Nom: <?=$value->name?></li>
+                                                        <li>Puce : <?=$value->chip?></li>
+                                                        <li>Espèce : <?=$value->species?></li>
+                                                        <li>Chiffre d'affaire : <?=$value->calculateTurnover()->getTurnover()?>€</li>
+                                                        <li><a href="/animal/information?id=<?=$value->getId()?>">Plus de détails ...</a></li>
+                                                    </ul>
+                                                </div>
+                                               
                                                 <p>-------------------</p>
                                                 <?php
                                             }

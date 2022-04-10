@@ -77,7 +77,7 @@
                                             <?php
                                         }
                                     ?>
-                                    <p>Chiffre d'affaire générer par cet animal: <?= $animal->calculateTurnover($allHealForOneAnimal)->getTurnover();?>€</p>
+                                    <p>Chiffre d'affaire générer par cet animal: <?= $animal->calculateTurnover()->getTurnover();?>€</p>
                                 </div>
                             </div>
                         </div>

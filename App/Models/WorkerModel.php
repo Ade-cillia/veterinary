@@ -7,6 +7,7 @@ use App\Tools\VerifData;
 
 abstract class WorkerModel extends Model{
     protected static $tableName = "worker";
+    protected static $tableNameSecondary = "treatment";
     protected static $class = WorkerClasse::class;
     public function __construct() {}
 
@@ -76,6 +77,18 @@ abstract class WorkerModel extends Model{
             ":id" => $id
         );
         return Bdd::prepare($sql,self::$class,$data,false);
+    }
+    public static function getAllForHeal($idheal) {
+        $table = self::$tableName;
+        $tableNameSecondary = self::$tableNameSecondary;
+        $sql = "SELECT $table.* FROM $table
+        INNER JOIN $tableNameSecondary ON $tableNameSecondary.worker_id=$table.id
+        WHERE $tableNameSecondary.heal_id=:id
+        ";
+        $data = array(
+            ":id" => $idheal
+        );
+        return Bdd::prepare($sql,self::$class,$data,true);
     }
     public static function delete($id) {
         $table = self::$tableName;

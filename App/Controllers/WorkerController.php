@@ -21,7 +21,6 @@ class WorkerController extends Controller{
     }
     public static function getOne($id) {
         $worker = WorkerModel::getOne($id);
-        
         include_once './public/views/worker/worker_info.php';
     }
 

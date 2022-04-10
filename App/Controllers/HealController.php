@@ -24,7 +24,7 @@ class HealController extends Controller{
     }
     public static function getOne($id) {
         $heal = HealModel::getOne($id);
-        var_dump($heal);
+        $worker = WorkerModel::getAllForHeal($id);
         include_once './public/views/heal/heal_info.php';
     }
 

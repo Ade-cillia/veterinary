@@ -10,7 +10,6 @@ use App\Models\OwnerModel;
 class AnimalController extends Controller{
     public static function index() {
         $allAnimals =  AnimalModel::getAll();
-        var_dump($allAnimals);
         include_once './public/views/animal/animal.php';
     }
     public static function add() {
@@ -25,8 +24,6 @@ class AnimalController extends Controller{
     public static function getOne($id) {
         $animal = AnimalModel::getOne($id);
         $allHealForOneAnimal = HealModel::getAllForOneAnimal($id);
-        var_dump($animal);
-        var_dump($allHealForOneAnimal);
         include_once './public/views/animal/animal_info.php';
     }
 
