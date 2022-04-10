@@ -26,6 +26,16 @@ class AnimalController extends Controller{
         $allHealForOneAnimal = HealModel::getAllForOneAnimal($id);
         include_once './public/views/animal/animal_info.php';
     }
+    public static function update($id) {
+        $allOwner = OwnerModel::getAll();
+        $allWorker = WorkerModel::getAll();
+        $animal = AnimalModel::getOne($id);
+        if (isset($_POST['submit'])) {
+            var_dump($_POST);
+            AnimalModel::updateAnimal($_POST);
+        }
+        include_once './public/views/animal/animal_update.php';
+    }
 
     public static function delete($id) {
         $animal = AnimalModel::getOne($id);

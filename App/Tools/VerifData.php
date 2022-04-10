@@ -161,15 +161,18 @@ abstract class VerifData {
 
     public static function pictureControl($picture,$file,$defaultPicture){
         if (isset($_FILES[$picture])) {
-            $link = $_FILES[$picture]["tmp_name"];  
-            $fileUrl="image/$file/add/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
-            $destdir = "./public/assets/$fileUrl";
-            $img=file_get_contents($link);
-            file_put_contents($destdir,$img);
-            return $fileUrl;
-        } else {
-            return $defaultPicture;
-        } 
+            if (!empty($_FILES[$picture]["tmp_name"])) {
+                $link = $_FILES[$picture]["tmp_name"];  
+                $fileUrl="image/$file/add/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
+                $destdir = "./public/assets/$fileUrl";
+                $img=file_get_contents($link);
+                file_put_contents($destdir,$img);
+                return $fileUrl;
+            }
+           
+        }
+        return $defaultPicture;
+
     }
     public static function dateTimeControl($inputName,$name){
         //-----------------PAS LE TEMPS DE FINIR-------------------------------------------------------------//

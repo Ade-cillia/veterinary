@@ -93,4 +93,57 @@ abstract class AnimalModel extends Model{
         );
         return Bdd::prepare($sql,self::$class,$data,true);
     }
+    public static function updateAnimal($data): void {
+        $table = self::$tableName;
+        $errorExeption = false;
+        try {
+            $verifData = VerifData::verifAnimalAdd($data);
+            $sql= "UPDATE $table SET 
+                name=:name,
+                chip=:chip,
+                species=:species,
+                picture=:picture,
+                weight=:weight,
+                sexe=:sexe,
+                favorite_healer_id=:favorite_healer_id,
+                date_visit=:date_visit,
+                date_birth=:date_birth,
+                date_death=:date_death,
+                other=:other,
+                owner_id=:owner_id
+            ";
+            $insertData = (array(
+                ':name' => $verifData["name"],
+                ':chip' => $verifData["chip"],
+                ':species' => $verifData["species"],
+                ':picture' => $verifData["picture"],
+                ':weight' => $verifData["weight"],
+                ':sexe' => $verifData["sexe"],
+                ':favorite_healer_id' => $verifData["favorite_healer_id"],
+                ':date_visit' => $verifData["date_visit"],
+                ':date_birth' => $verifData["date_birth"],
+                ':date_death' => $verifData["date_death"],
+                ':other' => $verifData["other"],
+                ':owner_id' => $verifData["owner_id"],
+            ));
+        } catch (\Exception $error) {
+            $errorExeption=true;
+            echo '<div class="error"><p>Erreur reçue : '.$error->getMessage()."</p></div>";
+        }
+        try {
+            if (!$errorExeption) {
+                $response = Bdd::prepare(
+                    $sql,
+                    self::$class,
+                    $insertData,
+                    false
+                );
+                header("Location: /animal");
+                exit;
+            }
+        } catch (\Throwable $th) {
+            echo '<div class="error"><p>Erreur importante est survenu, Merci de contacter "ElFamosoRéparator-Aurélien"</p></div>';
+            var_dump($th);
+        }
+    }
 }

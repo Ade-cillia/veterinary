@@ -27,16 +27,23 @@
 .info_detail h2{
     text-align: center;
 }
-.card_delete_container{
+.card_icon{
+    display: flex;
     width: 100%;
+    justify-content: flex-end;
+}
+.card_update_container,
+.card_delete_container{
     display: flex;
     justify-content: flex-end;
 }
+
 .card_delete_container svg{
     padding-right: 10px;
     padding-bottom: 10px;
     cursor: pointer;
 }
+.card_update_container svg:hover,
 .card_delete_container svg:hover{
     transform: scale(1.05);
 }

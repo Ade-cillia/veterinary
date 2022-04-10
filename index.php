@@ -58,6 +58,15 @@ switch ($request) {
     case '/animal/add' :
         AnimalController::add();
         break;
+    case '/animal/update':
+    case '/animal/update?'.$query :
+        if (!isset($_GET['id'])) {
+            header('Location: /animal');
+            exit;
+        } else {
+            AnimalController::update($_GET['id']);
+        }
+        break;
     case '/animal/information':
     case '/animal/information?'.$query :
         if (!isset($_GET['id'])) {
@@ -76,7 +85,7 @@ switch ($request) {
             AnimalController::delete($_GET['id']);
         }
         break;
-
+    
     //OWNER
     case '/owner' :
         OwnerController::index();
