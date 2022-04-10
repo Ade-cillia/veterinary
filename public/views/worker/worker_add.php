@@ -7,7 +7,7 @@
                 </div>
                 <a href="/worker" class="btn btn-primary">RETOUR</a>
                 <div class="">
-                    <form method="post" action="/worker/add">
+                    <form method="post" action="/worker/add" enctype="multipart/form-data">
                         </br>
                         <div class="mb-3">
                             <label for="last_name" class="form-label">Nom<span class="required_input">*</span></label>

@@ -162,7 +162,7 @@ abstract class VerifData {
     public static function pictureControl($picture,$file,$defaultPicture){
         if (isset($_FILES[$picture])) {
             $link = $_FILES[$picture]["tmp_name"];  
-            $destdir = "./public/assets/image/$file/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
+            $destdir = "./public/assets/image/$file/add/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
             $img=file_get_contents($link);
             file_put_contents($destdir,$img);
             return "image/$file/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
