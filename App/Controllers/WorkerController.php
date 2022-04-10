@@ -24,6 +24,11 @@ class WorkerController extends Controller{
     }
 
     public static function delete($id) {
+        $worker = WorkerModel::getOne($id);
+        $picture = "./public/assets/$worker->picture";
+        if ($picture != "./public/assets/image/worker/default.png") {
+            unlink("./public/assets/$worker->picture");
+        }
         WorkerModel::delete($id);
         header("Location: /worker");
         exit;

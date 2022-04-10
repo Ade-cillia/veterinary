@@ -71,6 +71,7 @@ abstract class AnimalModel extends Model{
             }
         } catch (\Throwable $th) {
             echo '<div class="error"><p>Erreur importante est survenu, Merci de contacter "ElFamosoRéparator-Aurélien"</p></div>';
+            var_dump($th);
         }
     }
     public static function delete($id) {

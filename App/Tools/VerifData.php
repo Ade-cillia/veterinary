@@ -44,7 +44,7 @@ abstract class VerifData {
             $verifyData["species"] = self::textControl("species","Espèce",1,50);
             $verifyData["sexe"] = self::textControl("sexe","Sexe",1,50);
 
-            $verifyData["weight"] = self::intControl("weight","Poids",0,null);
+            $verifyData["weight"] = self::intControl("weight","Poids",0,2000);
             $verifyData["favorite_healer_id"] = self::intControl("favorite_healer_id","Soigneur favoris",0,null,true);
             $verifyData["owner_id"] = self::intControl("owner_id","Propriétaire",0,255);
             
@@ -141,7 +141,7 @@ abstract class VerifData {
             } else if(intval($minInt) && intval($_POST[$inputName]) < $minInt){
                 throw new Exception("Le champ '".$name."' est invalide (nombre inférieur à celui autorisé: $minInt)");
             } else if (intval($maxInt) &&  intval($_POST[$inputName]) > $maxInt){
-                throw new Exception("Le champ '".$name."' est invalide (nombre supérieur à celui autorisé: $minInt)");
+                throw new Exception("Le champ '".$name."' est invalide (nombre supérieur à celui autorisé: $maxInt)");
             } 
         }
         return intval($_POST[$inputName]);
@@ -162,10 +162,11 @@ abstract class VerifData {
     public static function pictureControl($picture,$file,$defaultPicture){
         if (isset($_FILES[$picture])) {
             $link = $_FILES[$picture]["tmp_name"];  
-            $destdir = "./public/assets/image/$file/add/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
+            $fileUrl="image/$file/add/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
+            $destdir = "./public/assets/$fileUrl";
             $img=file_get_contents($link);
             file_put_contents($destdir,$img);
-            return "image/$file/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
+            return $fileUrl;
         } else {
             return $defaultPicture;
         } 

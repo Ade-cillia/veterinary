@@ -28,6 +28,11 @@ class AnimalController extends Controller{
     }
 
     public static function delete($id) {
+        $animal = AnimalModel::getOne($id);
+        $picture = "./public/assets/$animal->picture";
+        if ($picture != "./public/assets/image/animal/default.png") {
+            unlink("./public/assets/$animal->picture");
+        }
         AnimalModel::delete($id);
         header("Location: /animal");
         exit;
