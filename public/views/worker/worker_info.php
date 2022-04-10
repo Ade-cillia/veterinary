@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-10 card shadow mx-auto mt-3">
                 <div class="card-header text-center bg-dark text-light mt-2">
-                    <h3>Employer n°<?=$worker?$worker->id:"invalide"?></h3>
+                    <h3>Employer n°<?=$worker?$worker->getId():"invalide"?></h3>
                 </div>
                 <a href="/worker" class="btn btn-primary">RETOUR</a>
                 <div>
@@ -15,11 +15,11 @@
                     } else {
                         ?>
                         <div>
-                            <div>
-                                <img src="/public/assets/<?=$worker->picture?>" alt="profile de <?=$worker->last_name?> <?=$worker->first_name?>" width="100%">
+                            <div class="image_info">
+                                <img src="/public/assets/<?=$worker->picture?>" alt="profile de <?=$worker->getLastName()?> <?=$worker->getFirstName()?>">
                             </div>
                             <div class="info_detail">
-                                <h2><?=$worker->last_name?> <?=$worker->first_name?></h2>
+                                <h2><?=$worker->getLastName()?> <?=$worker->getFirstName()?></h2>
                                 <p class="bold">Information de l'employer:</p>
                                 <ul>
                                     <li>Genre: <?=$worker->sexe?></li>

@@ -34,7 +34,7 @@
                                     <?php
                                     foreach ($allAnimal as $key => $animal) {
                                         ?>
-                                        <option value="<?=$animal->id?>"  <?= isset($_POST['animal_id'])?($_POST['animal_id']==$animal->id?"selected":""):""?>><?=$animal->name?> de <?=$animal->owner_last_name?> <?=$animal->owner_first_name?></option>
+                                        <option value="<?=$animal->getId()?>"  <?= isset($_POST['animal_id'])?($_POST['animal_id']==$animal->getId()?"selected":""):""?>><?=$animal->name?> de <?=$animal->owner_last_name?> <?=$animal->owner_first_name?></option>
                                         <?php
                                     }
                                     ?>
@@ -61,7 +61,7 @@
 
                                     foreach ($allWorker as $key => $worker) {
                                         ?>
-                                        <option value="<?=$worker->id?>"><?=$worker->last_name?> <?=$worker->first_name?></option>
+                                        <option value="<?=$worker->getId()?>"><?=$worker->getLastName()?> <?=$worker->getFirstName()?></option>
                                         <?php
                                     }
                                 ?>
@@ -84,7 +84,7 @@
                                 <?php
                                 foreach ($allRoom as $key => $room) {
                                     ?>
-                                    <option value="<?=$room->id?>"><?=$room->name?>-<?=$room->type?>-<?=$room->cabinet_name?></option>
+                                    <option value="<?=$room->getId()?>"><?=$room->name?>-<?=$room->type?>-<?=$room->cabinet_name?></option>
                                     <?php
                                 }
                                 ?>

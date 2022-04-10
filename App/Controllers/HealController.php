@@ -7,7 +7,7 @@ use App\Models\CabinetModel;
 use App\Models\HealModel;
 use App\Models\WorkerModel;
 
-class HealController {
+class HealController extends Controller{
     public static function index() {
         $allHeal =  HealModel::getAll();
         include_once './public/views/heal/heal.php';
@@ -17,14 +17,14 @@ class HealController {
         $allRoom =  CabinetModel::getAllRoom();
         $allAnimal = AnimalModel::getAll();
         if (isset($_POST['submit'])) {
-            var_dump($_POST);
             HealModel::setHealTreatment($_POST);
         }
         include_once './public/views/heal/heal_add.php';
         
     }
     public static function getOne($id) {
-        $animal = HealModel::getOne($id);
+        $heal = HealModel::getOne($id);
+        var_dump($heal);
         include_once './public/views/heal/heal_info.php';
     }
 

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-10 card shadow mx-auto mt-3">
                 <div class="card-header text-center bg-dark text-light mt-2">
-                    <h3>Propriétaire n°<?=$owner?$owner->id:"invalide"?></h3>
+                    <h3>Propriétaire n°<?=$owner?$owner->getId():"invalide"?></h3>
                 </div>
                 <a href="/owner" class="btn btn-primary">RETOUR</a>
                 <div>
@@ -16,7 +16,7 @@
                         ?>
                         <div>
                             <div class="info_detail">
-                                <h2><?=$owner->last_name?> <?=$owner->first_name?></h2>
+                                <h2><?=$owner->getLastName()?> <?=$owner->getFirstName()?></h2>
                                 <p class="bold">Information du propriétaire:</p>
                                 <ul>
                                     <li>Téléphone: <?=$owner->phone?></li>

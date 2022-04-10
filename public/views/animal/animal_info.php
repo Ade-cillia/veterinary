@@ -3,12 +3,11 @@
         <div class="row">
             <div class="col-10 card shadow mx-auto mt-3">
                 <div class="card-header text-center bg-dark text-light mt-2">
-                    <h3>Animal n°<?=$animal?$animal->id:"invalide"?></h3>
+                    <h3>Animal n°<?=$animal?$animal->getId():"invalide"?></h3>
                 </div>
                 <a href="/animal" class="btn btn-primary">RETOUR</a>
                 <div>
                     <?php
-                    var_dump($animal);
                     if (!$animal) {
                         ?>
                         <p>ID de l'animal invalide</p>
@@ -16,8 +15,8 @@
                     } else {
                         ?>
                         <div>
-                            <div>
-                                <img src="/public/assets/<?=$animal->picture?>" alt="profile de <?=$animal->name?>" width="100%">
+                            <div class="image_info">
+                                <img src="/public/assets/<?=$animal->picture?>" alt="profile de <?=$animal->name?>">
                             </div>
                             <div class="info_detail">
                                 <h2><?=$animal->name?></h2>

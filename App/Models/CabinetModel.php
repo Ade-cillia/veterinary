@@ -3,10 +3,11 @@ namespace App\Models;
 
 use App\Bdd;
 use App\Tools\VerifData;
+use App\Classes\CabinetClasse;
 
-class CabinetModel {
-    private static $tableName = "cabinet";
-    private static $class = "App\Models\CabinetModel";
+abstract class CabinetModel extends Model{
+    protected static $tableName = "cabinet";
+    protected static $class = CabinetClasse::class;
     public function __construct() {}
 
     public static function getAll() {

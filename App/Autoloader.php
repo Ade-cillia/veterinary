@@ -1,5 +1,8 @@
 <?php
 namespace App;
+// -------------------------- UNUSED-My-LastVersion ----------------------------
+
+/*
 class Autoloader {
     static public function register(){
         spl_autoload_register(array(__CLASS__,"autoload"));
@@ -12,3 +15,4 @@ class Autoloader {
         }
     }
 }
+*/

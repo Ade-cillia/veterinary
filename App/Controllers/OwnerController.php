@@ -5,7 +5,7 @@ use App\Bdd;
 use App\Models\OwnerModel;
 // use App\Models\CabinetModel;
 
-class OwnerController {
+class OwnerController extends Controller{
     public static function index() {
         $allOwner =  OwnerModel::getAll();
         //var_dump($allOwner);
@@ -14,7 +14,6 @@ class OwnerController {
     public static function add() {
         if (isset($_POST['submit'])) {
             OwnerModel::setOwner($_POST);
-            var_dump($_POST);
         }
         include_once './public/views/owner/owner_add.php';
     }

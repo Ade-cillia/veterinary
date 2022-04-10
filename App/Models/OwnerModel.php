@@ -2,11 +2,12 @@
 namespace App\Models;
 
 use App\Bdd;
+use App\Classes\OwnerClasse;
 use App\Tools\VerifData;
 
-class OwnerModel {
-    private static $tableName = "owner";
-    private static $class = "App\Models\OwnerModel";
+abstract class OwnerModel extends Model{
+    protected static $tableName = "owner";
+    protected static $class = OwnerClasse::class;
     public function __construct() {}
 
     public static function getAll() {

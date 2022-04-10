@@ -53,7 +53,7 @@
                                 <?php
                                 foreach ($allWorker as $key => $workerUpper) {
                                     ?>
-                                    <option value="<?=$workerUpper->id?>"><?=$workerUpper->last_name?> <?=$workerUpper->first_name?></option>
+                                    <option value="<?=$workerUpper->getId()?>"><?=$workerUpper->getLastName()?> <?=$workerUpper->getFirstName()?></option>
                                     <?php
                                 }
                                 ?>
@@ -66,7 +66,7 @@
                                 <?php
                                 foreach ($allCabinet as $key => $cabinet) {
                                     ?>
-                                    <option value="<?=$cabinet->id?>"><?=$cabinet->name?></option>
+                                    <option value="<?=$cabinet->getId()?>"><?=$cabinet->name?></option>
                                     <?php
                                 }
                                 ?>

@@ -3,12 +3,12 @@ namespace App\Models;
 
 use App\Bdd;
 use App\Tools\VerifData;
+use App\Classes\AnimalClasse;
 
-class AnimalModel {
-    private static $tableName = "animal";
-    private static $class = "App\Models\AnimalModel";
-    public function __construct() {}
-
+abstract class AnimalModel extends Model{
+    protected static $tableName = "animal";
+    protected static $class = AnimalClasse::class;
+    
     public static function getAll() {
         $table = self::$tableName;
         $query = "SELECT $table.*,

@@ -4,7 +4,7 @@ include_once __DIR__ . '/public/layout/head.php';
 
 date_default_timezone_set('Europe/Paris');
 
-use App\Autoloader;
+//use App\Autoloader;
 use App\Bdd;
 use App\DotEnv;
 use App\Controllers\HomeController;
@@ -12,7 +12,8 @@ use App\Controllers\WorkerController;
 use App\Controllers\AnimalController;
 use App\Controllers\OwnerController;
 use App\Controllers\HealController;
-Autoloader::register();
+//Autoloader::register();
+require_once "vendor/autoload.php";
 (new DotEnv(__DIR__ . '/.env'))->load();
 $pdo = Bdd::connect();
 

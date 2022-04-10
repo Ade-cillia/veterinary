@@ -3,12 +3,14 @@ namespace App\Controllers;
 
 use App\Bdd;
 use App\Models\AnimalModel;
+use App\Models\HealModel;
 use App\Models\WorkerModel;
 use App\Models\OwnerModel;
 
-class AnimalController {
+class AnimalController extends Controller{
     public static function index() {
         $allAnimals =  AnimalModel::getAll();
+        var_dump($allAnimals);
         include_once './public/views/animal/animal.php';
     }
     public static function add() {
@@ -22,6 +24,8 @@ class AnimalController {
     }
     public static function getOne($id) {
         $animal = AnimalModel::getOne($id);
+        $allHealForOneAnimal = HealModel::allForOneAnimal($id);
+        var_dump($animal);
         include_once './public/views/animal/animal_info.php';
     }
 

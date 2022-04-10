@@ -5,9 +5,10 @@ use App\Bdd;
 use App\Models\WorkerModel;
 use App\Models\CabinetModel;
 
-class WorkerController {
+class WorkerController extends Controller{
     public static function index() {
         $allWorker =  WorkerModel::getAll();
+        var_dump($allWorker);
         include_once './public/views/worker/worker.php';
     }
     public static function add() {
@@ -20,7 +21,6 @@ class WorkerController {
     }
     public static function getOne($id) {
         $worker = WorkerModel::getOne($id);
-        
         
         include_once './public/views/worker/worker_info.php';
     }

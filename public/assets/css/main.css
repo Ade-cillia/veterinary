@@ -1,4 +1,8 @@
 
+.green{
+    color: green;
+}
+.red,
 .required_input{
     color: red;
 }
@@ -71,4 +75,11 @@
 }
 #allSelectedHealer{
     margin-bottom: 10px ;
+}
+.image_info{
+    margin-top: 5px;
+    width: 100%;
+    max-height: 400px;
+    display: flex;
+    justify-content: center;
 }

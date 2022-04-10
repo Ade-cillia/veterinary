@@ -11,9 +11,8 @@
                 </div>
                 <div>
                     <?php
-                     var_dump($allHeal);
                      foreach ($allHeal as $key => $value) {
-                        include "./public/components/owner_card.php";
+                        include "./public/components/heal_card.php";
                     }
                     ?>
                     

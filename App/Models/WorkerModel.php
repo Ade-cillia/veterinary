@@ -2,11 +2,12 @@
 namespace App\Models;
 
 use App\Bdd;
+use App\Classes\WorkerClasse;
 use App\Tools\VerifData;
 
-class WorkerModel {
-    private static $tableName = "worker";
-    private static $class = "App\Models\WorkerModel";
+abstract class WorkerModel extends Model{
+    protected static $tableName = "worker";
+    protected static $class = WorkerClasse::class;
     public function __construct() {}
 
     

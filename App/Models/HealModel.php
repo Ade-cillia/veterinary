@@ -2,12 +2,13 @@
 namespace App\Models;
 
 use App\Bdd;
+use App\Classes\HealClasse;
 use App\Tools\VerifData;
 
-class HealModel {
-    private static $tableName = "heal";
-    private static $tableNameSecondary = "treatment";
-    private static $class = "App\Models\HealModel";
+abstract class HealModel extends Model{
+    protected static $tableName = "heal";
+    protected static $tableNameSecondary = "treatment";
+    protected static $class = HealClasse::class;
     public function __construct() {}
 
     public static function getAll() {

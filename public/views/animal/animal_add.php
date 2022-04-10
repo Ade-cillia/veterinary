@@ -45,7 +45,7 @@
                                 <?php
                                 foreach ($allWorker as $key => $loveWorker) {
                                     ?>
-                                    <option value="<?=$loveWorker->id?>" <?= isset($_POST['favorite_healer_id'])?($_POST['favorite_healer_id']==$loveWorker->id?"selected":""):""?>><?=$loveWorker->last_name?> <?=$loveWorker->first_name?></option>
+                                    <option value="<?=$loveWorker->getId()?>" <?= isset($_POST['favorite_healer_id'])?($_POST['favorite_healer_id']==$loveWorker->getId()?"selected":""):""?>><?=$loveWorker->getLastName()?> <?=$loveWorker->getFirstName()?></option>
                                     <?php
                                 }
                                 ?>
@@ -60,7 +60,7 @@
                                     <?php
                                     foreach ($allOwner as $key => $owner) {
                                         ?>
-                                        <option value="<?=$owner->id?>"  <?= isset($_POST['owner_id'])?($_POST['owner_id']==$owner->id?"owner_id":""):""?>><?=$owner->last_name?> <?=$owner->first_name?></option>
+                                        <option value="<?=$owner->getId()?>"  <?= isset($_POST['owner_id'])?($_POST['owner_id']==$owner->getId()?"owner_id":""):""?>><?=$owner->getLastName()?> <?=$owner->getFirstName()?></option>
                                         <?php
                                     }
                                     ?>
