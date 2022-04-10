@@ -1,6 +1,6 @@
 <div class="worker_card card">
     <div>
-        <img src="/public/assets/<?=$value->picture?>" alt="profile de <?=$value->getLastName()?> <?=$value->getFirstName()?>" width="100%">
+        <img src="/public/assets/<?=$value->picture?>" alt="profile de <?=$value->getLastName()?> <?=$value->getFirstName()?>" width="100%" class="card_image">
     </div>
     <div>
         <h3><?=$value->getLastName()?> <?=$value->getFirstName()?></h3>

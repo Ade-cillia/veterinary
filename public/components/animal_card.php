@@ -1,6 +1,6 @@
 <div class="animal_card card">
     <div>
-        <img src="/public/assets/<?=$value->picture?>" alt="profile de <?=$value->name?>" width="100%">
+        <img src="/public/assets/<?=$value->picture?>" alt="profile de <?=$value->name?>" width="100%" class="card_image">
     </div>
     <div>
         <h3><?=$value->name?></h3>

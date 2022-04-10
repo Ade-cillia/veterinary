@@ -9,7 +9,6 @@ use App\Models\OwnerModel;
 class OwnerController extends Controller{
     public static function index() {
         $allOwner =  OwnerModel::getAll();
-        //var_dump($allOwner);
         include_once './public/views/owner/owner.php';
     }
     public static function add() {

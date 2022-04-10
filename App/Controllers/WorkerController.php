@@ -8,7 +8,6 @@ use App\Models\CabinetModel;
 class WorkerController extends Controller{
     public static function index() {
         $allWorker =  WorkerModel::getAll();
-        var_dump($allWorker);
         include_once './public/views/worker/worker.php';
     }
     public static function add() {

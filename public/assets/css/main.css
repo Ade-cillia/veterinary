@@ -85,3 +85,7 @@
 .litle_picture img{
     max-width: 200px;
 }
+.card_image{
+    max-width: 400px;
+    max-height: 400px;
+}

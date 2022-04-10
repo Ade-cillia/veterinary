@@ -29,7 +29,7 @@ abstract class VerifData {
             $verifyData["date_in"] = self::textControl("date_in","Date d'entrée",1,50);
             $verifyData["date_out"] = self::textControl("date_out","Date de sortie",1,50,true);
 
-            $verifyData["picture"] = self::pictureControl("picture",$defaultPicture);
+            $verifyData["picture"] = self::pictureControl("picture","worker",$defaultPicture);
         } catch (Exception $error) {
             throw new Exception($error->getMessage());
         }
@@ -55,7 +55,7 @@ abstract class VerifData {
             $verifyData["other"] = self::textControl("other","Autre",0,500,true);
 
            
-            $verifyData["picture"] = self::pictureControl("picture",$defaultPicture);
+            $verifyData["picture"] = self::pictureControl("picture","animal",$defaultPicture);
         } catch (Exception $error) {
             throw new Exception($error->getMessage());
         }
@@ -159,10 +159,19 @@ abstract class VerifData {
         return $bool;
     }
 
-    public static function pictureControl($picture,$defaultPicture){
-        return $defaultPicture; //flemme#pas le temps ^^
+    public static function pictureControl($picture,$file,$defaultPicture){
+        if (isset($_FILES[$picture])) {
+            $link = $_FILES[$picture]["tmp_name"];  
+            $destdir = "./public/assets/image/$file/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
+            $img=file_get_contents($link);
+            file_put_contents($destdir,$img);
+            return "image/$file/".filter_var($_FILES[$picture]["name"],FILTER_UNSAFE_RAW);
+        } else {
+            return $defaultPicture;
+        } 
     }
     public static function dateTimeControl($inputName,$name){
+        //-----------------PAS LE TEMPS DE FINIR-------------------------------------------------------------//
         
         // if (!isset($_POST[$inputName])){
         //     throw new Exception("Le champ '".$name."'est manquant");
